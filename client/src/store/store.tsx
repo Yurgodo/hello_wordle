@@ -3,8 +3,10 @@ import {useLocalObservable} from "mobx-react-lite"
 
 export interface IAppStore {
     currentWord: string
+    setCurrentWord: (word: string) => void
     theme: string
-    toggleTheme: () => void;
+    toggleTheme: () => void
+
 }
 
 export function createStore(): IAppStore {
@@ -16,6 +18,9 @@ export function createStore(): IAppStore {
             const newTheme = this.theme === "light" ? "dark" : "light"
             localStorage.setItem("theme", newTheme)
             this.theme = newTheme
+        },
+        setCurrentWord: (word) => {
+            this.currentWord = word
         }
     }
 }
@@ -29,7 +34,7 @@ export const AppStoreProvider = ({ children }: any) => {
     )
 };
 
-export const useAppStore = () => {
+export const useAppStore: () => IAppStore = () => {
     const store = React.useContext(StoreContext)
     if (!store) {
         throw new Error('useStore must be used within a StoreProvider.')

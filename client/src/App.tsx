@@ -4,7 +4,6 @@ import {AppStoreProvider} from "./store/store";
 
 const App = () => (
     <div>
-        Test
         <AppStoreProvider>
             <Content />
         </AppStoreProvider>
