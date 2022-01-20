@@ -13,9 +13,11 @@
     "@types/node": "^17.0.10",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "mobx": "^6.3.12",
     "mobx-react-lite": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {

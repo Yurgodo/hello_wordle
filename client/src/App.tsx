@@ -1,12 +1,14 @@
 import React from "react";
 import Content from "./components/Content/Content";
-import Header from "./components/Header/Header";
+import {AppStoreProvider} from "./store/store";
 
 const App = () => (
-    <React.Fragment>
-        <Header />
-        <Content />
-    </React.Fragment>
+    <div>
+        Test
+        <AppStoreProvider>
+            <Content />
+        </AppStoreProvider>
+    </div>
 );
 
 export default App;
