@@ -6,7 +6,6 @@ export interface IAppStore {
     setCurrentWord: (word: string) => void
     theme: string
     toggleTheme: () => void
-
 }
 
 export function createStore(): IAppStore {
@@ -14,12 +13,12 @@ export function createStore(): IAppStore {
     return {
         currentWord: "",
         theme: theme,
-        toggleTheme: () => {
+        toggleTheme() {
             const newTheme = this.theme === "light" ? "dark" : "light"
             localStorage.setItem("theme", newTheme)
             this.theme = newTheme
         },
-        setCurrentWord: (word) => {
+        setCurrentWord(word) {
             this.currentWord = word
         }
     }

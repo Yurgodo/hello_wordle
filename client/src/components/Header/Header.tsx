@@ -1,7 +1,10 @@
 import React from "react"
 import styled from "styled-components";
+import {useAppStore} from "../../store/store";
+import {observer} from "mobx-react-lite";
 
 const Header = () => {
+    const store = useAppStore()
     const Title = styled.h1`
         
     `
@@ -9,10 +12,11 @@ const Header = () => {
     return (
         <React.Fragment>
             <Title>
-                Hello wordle
+                {/*Hello wordle*/}
+                {store.currentWord}
             </Title>
         </React.Fragment>
     )
 }
 
-export default Header
+export default observer(Header)

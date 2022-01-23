@@ -5,13 +5,16 @@ const getData: (url: string, data: any) => Promise<string> = (url, data) => {
     })
 }
 
-export const getWord: (wordLength: string) => void = (wordLength: string) => {
+export const getWord: (wordLength: string) => Promise<string> = (wordLength: string) => {
     const params = {
         word_length: wordLength
     }
-    getData("http://localhost:3000/random_word", params).then(data => {
-        console.log(data)
-    }).catch((error) => {
-        console.log(error)
-    })
+    return getData("http://localhost:3000/random_word", params)
+}
+
+export const isWordExistence: (word: string) => Promise<string> = (word: string) => {
+    const params = {
+        word
+    }
+    return getData("http://localhost:3000/word_existence", params)
 }

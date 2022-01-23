@@ -13,7 +13,9 @@ const Content = () => {
     const {theme} = store
 
     useEffect(() => {
-        getWord("5");
+        getWord("5").then(res => {
+            store.setCurrentWord(res);
+        });
     }, [])
 
     const Container = styled.div`
