@@ -6,20 +6,29 @@ export interface IAppStore {
     setCurrentWord: (word: string) => void
     theme: string
     toggleTheme: () => void
+    gameState: Array<any>
+    pushWordToState: (word: string) => void
 }
 
 export function createStore(): IAppStore {
     const theme = localStorage.getItem("theme") || "light"
+    const gameState = JSON.parse(localStorage.getItem("gameState")) || []
     return {
         currentWord: "",
+        setCurrentWord(word) {
+            this.currentWord = word
+        },
         theme: theme,
         toggleTheme() {
             const newTheme = this.theme === "light" ? "dark" : "light"
             localStorage.setItem("theme", newTheme)
             this.theme = newTheme
         },
-        setCurrentWord(word) {
-            this.currentWord = word
+        gameState: gameState,
+        pushWordToState(word) {
+            let gameState = this.gameState
+            gameState.push(word)
+            localStorage.setItem("gameState", JSON.stringify(gameState))
         }
     }
 }
